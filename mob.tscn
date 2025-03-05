@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://dv68qbrr4hkr"]
+
+[ext_resource type="Script" uid="uid://ehc3ioeyiyhe" path="res://scripts/Mob.cs" id="1_1qmh0"]
+[ext_resource type="Texture2D" uid="uid://ve1mj5oq0bsx" path="res://art/enemyFlyingAlt_1.png" id="2_gfurk"]
+[ext_resource type="Texture2D" uid="uid://dq1yo0leqf38s" path="res://art/enemyFlyingAlt_2.png" id="3_ieysi"]
+[ext_resource type="Texture2D" uid="uid://ca1qstbscg7g8" path="res://art/enemySwimming_1.png" id="4_cixyi"]
+[ext_resource type="Texture2D" uid="uid://cdau6wrangfam" path="res://art/enemySwimming_2.png" id="5_7ulmv"]
+[ext_resource type="Texture2D" uid="uid://yaosf2wmtgg3" path="res://art/enemyWalking_1.png" id="6_pcqmr"]
+[ext_resource type="Texture2D" uid="uid://xuxecfd7rloa" path="res://art/enemyWalking_2.png" id="7_jbnni"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yscv0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gfurk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ieysi")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cixyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7ulmv")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_pcqmr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jbnni")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1qmh0"]
+
+[node name="Mob" type="RigidBody2D"]
+collision_mask = 0
+script = ExtResource("1_1qmh0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yscv0")
+animation = &"walk"
+frame_progress = 0.0635076
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 1.19209e-07)
+scale = Vector2(7.20322, -3.22124)
+shape = SubResource("CapsuleShape2D_1qmh0")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
